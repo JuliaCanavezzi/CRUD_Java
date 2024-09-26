@@ -8,6 +8,14 @@ public class Product {
 private float maxDiscount;
 private int quantity;
 
+public Product(){ }
+public Product(String sku, String description, float price, float maxDiscount, int quantity) {
+	this.sku = sku;
+	this.description = description;
+	this.price = price;
+	this.maxDiscount = maxDiscount;
+	this.quantity = quantity;
+}
 public int getId() {
 	return id;
 }
