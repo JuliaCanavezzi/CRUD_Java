@@ -10,7 +10,7 @@
 
 # Log file
 *.log
-
+*.sql
 # BlueJ files
 *.ctxt
 
