@@ -6,7 +6,9 @@ import entity.Product;
 
 public class CreateMenu {
 	public static void show () {
+		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
+
 		System.out.println("\n Enter the quantity: ");
 		int quantity = in.nextInt();
 		System.out.println("\n Enter the SKU: ");

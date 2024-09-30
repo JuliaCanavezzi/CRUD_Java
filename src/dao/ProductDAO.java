@@ -59,6 +59,31 @@ public class ProductDAO {
 		}
 		return products;
 	}
+
+	public static void Update (Product product){
+		String sql = "UPDATE product SET description = ?, sku = ?, max_discount = ?, price = ?, quantity = ? WHERE id = ?";
+
+		try(
+			Connection con = DatabaseConnection.getConnection();
+			PreparedStatement stat = con.prepareStatement(sql);
+		){
+
+			stat.setString(1, product.getDescription());
+			stat.setString(2, product.getSku());
+			stat.setFloat(3, product.getMaxDiscount());
+			stat.setFloat(4, product.getPrice());
+			stat.setInt(5, product.getQuantity());
+			stat.setInt(6, product.getId());
+
+			stat.executeUpdate();
+
+		} catch(SQLException e) {
+				e.printStackTrace();
+
+		}
+	}
 }
+
+
 
 
