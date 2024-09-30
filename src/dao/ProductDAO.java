@@ -82,6 +82,22 @@ public class ProductDAO {
 
 		}
 	}
+
+	public static void Delete (int id) {
+
+		String sql = "DELETE FROM product WHERE id = ?";
+
+		try (
+			Connection conn = DatabaseConnection.getConnection();
+			PreparedStatement state = conn.prepareStatement(sql);
+		) {
+			state.setInt(1, id);
+			state.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 
