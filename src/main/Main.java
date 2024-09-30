@@ -3,9 +3,7 @@ package main;
 import java.util.Scanner;
 import dao.ProductDAO;
 import entity.Product;
-import menu.CreateMenu;
-import menu.ListMenu;
-import menu.ProductMenu;
+import menu.*;
 public class Main {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -27,6 +25,10 @@ public class Main {
 				System.out.println("\nExiting...");
 					in.close();
 					return;
+
+				case 4:
+				UpdateMenu.show();
+				break;
 
 				default:
 					System.out.println("\nEnter a valid option");
