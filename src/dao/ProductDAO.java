@@ -1,7 +1,10 @@
 package dao;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import config.DatabaseConnection;
@@ -29,8 +32,33 @@ public class ProductDAO {
 
 	}
 
-	public List<Product> Read () {
-		return null;
+	public static List<Product> List () {
+		List<Product> products = new ArrayList<>();
+		String sql = "SELECT * FROM product";
 
+
+		try (
+			Connection con = DatabaseConnection.getConnection();
+			Statement stat = con.createStatement();
+			ResultSet result = stat.executeQuery(sql)
+		) {
+
+				while(result.next()) {
+					Product product = new Product();
+					product.setId(result.getInt("id"));
+					product.setQuantity(result.getInt("quantity"));
+					product.setDescription(result.getString("description"));
+					product.setSku(result.getString("sku"));
+					product.setPrice(result.getFloat("price"));
+					product.setMaxDiscount(result.getFloat("max_discount"));
+
+					products.add(product);
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return products;
 	}
 }
+
+

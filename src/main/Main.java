@@ -4,6 +4,7 @@ import java.util.Scanner;
 import dao.ProductDAO;
 import entity.Product;
 import menu.CreateMenu;
+import menu.ListMenu;
 import menu.ProductMenu;
 public class Main {
 	public static void main(String[] args) {
@@ -18,11 +19,14 @@ public class Main {
 				CreateMenu.show();
 					break;
 
+				case 2:
+					ListMenu.show();
+					break;
 
-				case 6:
-					System.out.println("\nExiting...");
+				case 3:
+				System.out.println("\nExiting...");
 					in.close();
-				return;
+					return;
 
 				default:
 					System.out.println("\nEnter a valid option");
